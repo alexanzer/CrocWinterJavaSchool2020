@@ -5,6 +5,8 @@ import ru.croc.java.winter.school.zoo.employee.Employee;
 import ru.croc.java.winter.school.zoo.tracking.event.EmployeeAndAnimalInteractionEvent;
 import ru.croc.java.winter.school.zoo.tracking.event.TrackingEvent;
 import ru.croc.java.winter.school.zoo.tracking.finder.EmployeeAndAnimalInteractionEventFinder;
+import ru.croc.java.winter.school.zoo.tracking.finder.EmployeeAndEmployeeInteractionEventFinder;
+import ru.croc.java.winter.school.zoo.tracking.finder.EmployeeWorkingEventFinder;
 import ru.croc.java.winter.school.zoo.tracking.finder.EventFinder;
 
 import java.util.ArrayList;
@@ -30,6 +32,8 @@ public class TrackingService {
         events = new ArrayList<>();
         eventFinders = new ArrayList<>();
         eventFinders.add(new EmployeeAndAnimalInteractionEventFinder(1));
+        eventFinders.add(new EmployeeWorkingEventFinder());
+        eventFinders.add(new EmployeeAndEmployeeInteractionEventFinder(1));
     }
 
     /**

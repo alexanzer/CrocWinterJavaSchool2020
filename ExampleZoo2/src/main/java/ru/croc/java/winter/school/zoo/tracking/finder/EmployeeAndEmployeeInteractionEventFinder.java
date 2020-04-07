@@ -1,34 +1,33 @@
 package ru.croc.java.winter.school.zoo.tracking.finder;
 
-import ru.croc.java.winter.school.zoo.animal.Animal;
 import ru.croc.java.winter.school.zoo.employee.Employee;
 import ru.croc.java.winter.school.zoo.tracking.Tracked;
-import ru.croc.java.winter.school.zoo.tracking.event.EmployeeAndAnimalInteractionEvent;
+import ru.croc.java.winter.school.zoo.tracking.event.EmployeeAndEmployeeInteractionEvent;
 import ru.croc.java.winter.school.zoo.tracking.event.InteractionEvent;
 import ru.croc.java.winter.school.zoo.tracking.interaction.Interaction;
 
 /**
- * Анализатор события {@link EmployeeAndAnimalInteractionEvent}.
+ * Поиск событий {@link EmployeeAndEmployeeInteractionEvent}.
  */
-public class EmployeeAndAnimalInteractionEventFinder extends InteractionEventFinder {
-
+public class EmployeeAndEmployeeInteractionEventFinder extends InteractionEventFinder {
     /**
-     * Анализатор события {@link EmployeeAndAnimalInteractionEvent}.
+     * Анализатор события {@link EmployeeAndEmployeeInteractionEvent}.
      *
      * @param interactionDistance максимальное растояние, которое считается взаимодействием
      */
-    public EmployeeAndAnimalInteractionEventFinder(double interactionDistance) {
+    public EmployeeAndEmployeeInteractionEventFinder(double interactionDistance) {
         super(interactionDistance);
     }
 
     @Override
     protected InteractionEvent createEvent(Interaction interaction) {
-        return new EmployeeAndAnimalInteractionEvent(interaction);
+        return new EmployeeAndEmployeeInteractionEvent(interaction);
     }
 
     @Override
     protected boolean filterPair(Tracked a, Tracked b) {
-        return a instanceof Animal && b instanceof Employee
-                || a instanceof Employee && b instanceof Animal;
+        return a instanceof Employee && b instanceof Employee;
     }
+
+
 }

@@ -2,6 +2,7 @@ package ru.croc.java.winter.school.zoo.tracking.interaction;
 
 import ru.croc.java.winter.school.zoo.tracking.Tracked;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 /**
@@ -55,5 +56,9 @@ public class Interaction {
 
     public LocalDateTime getStartTime() {
         return startTime;
+    }
+
+    public Duration getDuration() {
+        return Duration.between(getStartTime(), getFinishTime());
     }
 }
