@@ -5,8 +5,9 @@ import java.lang.annotation.Target;
 import java.util.Collections;
 import java.util.List;
 
-@Target(ElementType.TYPE) @interface MarkedType {}
-@Target(ElementType.FIELD) @interface MarkedField {}
+@Target({ElementType.TYPE, ElementType.FIELD}) @interface MarkedType {}
+@Target(ElementType.FIELD) @interface MarkedField {
+}
 @Target(ElementType.METHOD) @interface MarkedMethod {}
 @Target(ElementType.PARAMETER) @interface MarkedParameter {}
 @Target(ElementType.CONSTRUCTOR) @interface MarkedConstructor {}
@@ -20,6 +21,7 @@ import java.util.List;
 @MarkedType
 public class SuperAnnotationMarkedClass<@MarkedTypeParameter T> {
     @MarkedField
+    @MarkedType
     private int count = 0;
 
     @MarkedConstructor

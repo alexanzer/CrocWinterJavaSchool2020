@@ -11,6 +11,7 @@ public class JacksonConverterTest {
 
         Book book = new Book("Дорофеев Максим", "Джедайские техники");
         String xml = jacksonConverter.toXml(book);
+        System.out.println(xml);
         Assertions.assertEquals(
                 "<Book>\n" +
                         "  <author>Дорофеев Максим</author>\n" +
