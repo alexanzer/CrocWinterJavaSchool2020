@@ -4,42 +4,47 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Objects;
+import java.util.List;
 
-@XmlRootElement
+@XmlRootElement(name = "Книга")
 public class Book {
-    @XmlElement
-    private String author;
-    @XmlElement
+    @XmlElementWrapper(name = "Авторы")
+    @XmlElement(name = "Автор")
+    private List<Author> authors;
+    @XmlElement(name = "Название")
     private String title;
-    @XmlAttribute
+    @XmlAttribute(name = "Номер")
     private String number;
 
-    public Book(String author, String title, String number) {
-        this.author = author;
+    public Book() {
+    }
+
+    public Book(List<Author> authors, String title, String number) {
+        this.authors = authors;
         this.title = title;
         this.number = number;
     }
 
-    public String getAuthor() {
-        return author;
+    public List<Author> getAuthors() {
+        return authors;
     }
 
     public String getTitle() {
         return title;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return Objects.equals(author, book.author) && Objects.equals(title, book.title);
+    public String getNumber() {
+        return number;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(author, title);
+    public String toString() {
+        return "Book{" +
+                "authors=" + authors +
+                ", title='" + title + '\'' +
+                ", number='" + number + '\'' +
+                '}';
     }
 }
