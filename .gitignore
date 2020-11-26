@@ -28,3 +28,4 @@ hs_err_pid*
 /DemoJavaThreads/.idea/
 /DemoJavaThreads/DemoJavaThreads.iml
 /DemoJavaThreads/target/
+/demo-networking/target/
